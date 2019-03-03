@@ -8,9 +8,9 @@ def steal(grid, row, column, direction)
                         '.'
                       end
 
-  ret_arr = move(row, column, next_dir)
+  next_rc = move(row, column, next_dir)
 
-  { 'row': ret_arr[0], 'column': ret_arr[1], 'direction': next_dir }
+  { 'row': next_rc[0], 'column': next_rc[1], 'direction': next_dir }
 end
 
 def next_direction(house, direction)
