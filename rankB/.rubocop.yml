@@ -1,4 +1,5 @@
-# Use only ascii symbols in comments.
+Naming/FileName:
+  Enabled: false
 AsciiComments:
   Enabled: false
 Style/FrozenStringLiteralComment:

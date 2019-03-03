@@ -15,27 +15,27 @@ end
 
 def next_direction(house, direction)
   if house == '.'
-    case direction
-    when 'N' then
-      'E'
-    when 'E' then
-      'S'
-    when 'S' then
-      'W'
-    when 'W' then
-      'N'
-    end
+    next_direction_normal(direction)
   else
-    case direction
-    when 'N' then
-      'W'
-    when 'W' then
-      'S'
-    when 'S' then
-      'E'
-    when 'E' then
-      'N'
-    end
+    next_direction_rich(direction)
+  end
+end
+
+def next_direction_normal(direction)
+  case direction
+  when 'N' then 'E'
+  when 'E' then 'S'
+  when 'S' then 'W'
+  when 'W' then 'N'
+  end
+end
+
+def next_direction_rich(direction)
+  case direction
+  when 'N' then 'W'
+  when 'W' then 'S'
+  when 'S' then 'E'
+  when 'E' then 'N'
   end
 end
 
@@ -44,14 +44,10 @@ def move(row, column, next_direction)
   next_column = column
 
   case next_direction
-  when 'N' then
-    next_row -= 1
-  when 'E' then
-    next_column += 1
-  when 'S' then
-    next_row += 1
-  when 'W' then
-    next_column -= 1
+  when 'N' then next_row -= 1
+  when 'E' then next_column += 1
+  when 'S' then next_row += 1
+  when 'W' then next_column -= 1
   end
 
   [next_row, next_column]
@@ -66,6 +62,7 @@ h.times do |_|
   grid << str
 end
 
+# 最初の場所
 row = h0 - 1
 column = w0 - 1
 direction = 'N'
@@ -73,11 +70,10 @@ direction = 'N'
 2000.times do |_|
   break if row.negative? || column.negative? || row == h || column == w
 
-  obj = steal(grid, row, column, direction)
-  # p obj
-  row = obj[:row]
-  column = obj[:column]
-  direction = obj[:direction]
+  next_info = steal(grid, row, column, direction)
+  row = next_info[:row]
+  column = next_info[:column]
+  direction = next_info[:direction]
 end
 
 h.times do |ri|
