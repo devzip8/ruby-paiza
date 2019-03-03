@@ -5,19 +5,15 @@ h.times do |i|
   cards << row
 end
 
-#p cards
-#p  cards[1-1][1-1]
-#p  cards[2-1][1-1]
-
 players = Array.new(n) { |idx| 0 }
 pi = 0
 
 l = gets.chomp.to_i
 l.times do |j|
   a1, b1, a2, b2 = gets.chomp.split(' ').map(&:to_i)
-  if cards[a1-1][b1-1] == cards[a2-1][b2-1]
+  if cards[a1 - 1][b1 - 1] == cards[a2 - 1][b2 - 1]
     players[pi] += 2
-     # めくれた場合はプレイヤーは変わらない
+    # めくれた場合はプレイヤーは変わらない
     next
   end
 

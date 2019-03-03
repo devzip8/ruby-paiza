@@ -11,7 +11,7 @@ n.times do |i|
     fee += extra * df
   end
 
-  min = fee if fee < min || min < 0 
+  min = fee if fee < min || min < 0
   max = fee if fee > max
 end
 
