@@ -1,3 +1,5 @@
 # Use only ascii symbols in comments.
 AsciiComments:
   Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false

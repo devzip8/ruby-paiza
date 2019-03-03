@@ -2,11 +2,11 @@ def steal(grid, row, column, direction)
   house = grid[row][column]
   next_dir = next_direction(house, direction)
 
-  if house == '.'
-    grid[row][column] = '*'
-  else
-    grid[row][column] = '.'
-  end
+  grid[row][column] = if house == '.'
+                        '*'
+                      else
+                        '.'
+                      end
 
   ret_arr = move(row, column, next_dir)
 
@@ -71,9 +71,7 @@ column = w0 - 1
 direction = 'N'
 
 2000.times do |_|
-  if row.negative? || column.negative? || row == h || column == w
-    break
-  end
+  break if row.negative? || column.negative? || row == h || column == w
 
   obj = steal(grid, row, column, direction)
   # p obj
